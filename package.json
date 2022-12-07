@@ -6,12 +6,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "@reduxjs/toolkit": "^1.9.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "firebase": "^9.14.0",
     "firebase-admin": "^11.3.0",
+    "framer-motion": "^7.6.19",
     "next": "latest",
+    "next-auth": "^4.18.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
