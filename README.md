@@ -1,4 +1,4 @@
-##E-Commerce Store
+## E-Commerce Store
 
 **Welcome to the Open Store!**
 Your one-stop shop for all your favorite products! We have a wide selection of items in categories such as electronics, home and garden, clothing and accessories, and much more.
@@ -17,13 +17,13 @@ This website is built using:
 - Firestore
 - Stripe
 
-###NextAuth 
+### NextAuth 
 Used for authentication and user management. This allows us to securely manage user accounts and ensure that only authorized users can access certain features of the website.
-###Tailwind 
+### Tailwind 
 CSS framework that provides a wide range of utility classes for quickly styling elements of the website. This allows us to create a consistent and professional-looking design with minimal effort.
-###Webhooks 
+### Webhooks 
 Used to trigger certain events when certain actions are performed on the website. For example, a webhook could be used to send a confirmation email to a customer when they make a purchase.
-###Redux 
+### Redux 
 State management library that allows us to manage the state of the website in a predictable and efficient way. This makes it easier to develop and maintain the website, and helps to ensure that the website remains fast and responsive.
 
 ---
@@ -77,7 +77,7 @@ The code also defines two selectors: selectItems and selectTotal. These are func
 
 Finally, the basketSlice.reducer is exported as the default export. This can be passed to the Redux combineReducers function to create a root reducer for the application.
 
-###Stripe
+### Stripe
 ```javascript
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
