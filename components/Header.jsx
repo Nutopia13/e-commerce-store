@@ -10,6 +10,7 @@ import {
   MagnifyingGlassIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
+import { motion as m } from "framer-motion";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data: session } = useSession();
@@ -20,9 +21,13 @@ const Header = () => {
       <div className="sticky flex items-center flex-grow px-6 py-4 bg-e_primary">
         <div className="flex items-center flex-grow mr-4 text-white sm:flex-grow-0">
           <Link href="/">
-            <h1 className="hidden py-2 text-2xl font-bold text- bg-accent_yellow md:inline-block md:px-4 rounded-xl">
+            <m.h1
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="hidden py-2 text-2xl font-bold text- bg-accent_yellow md:inline-block md:px-4 rounded-xl"
+            >
               Open Store
-            </h1>
+            </m.h1>
             <h1 className="px-4 py-2 text-2xl font-bold bg-black rounded-md md:hidden">
               OS
             </h1>
@@ -46,10 +51,12 @@ const Header = () => {
             <p>{session ? `Hello ${session.user.name}` : "Sign In"}</p>
             <p className="font-extrabold md:text-small ">Account and Lists</p>
           </div>
-          <div className="link">
-            <p>Returns</p>
-            <p className="font-extrabold md:text-small ">& Orders</p>
-          </div>
+          <Link href="orders">
+            <div className="link">
+              <p>Returns</p>
+              <p className="font-extrabold md:text-small ">& Orders</p>
+            </div>
+          </Link>
 
           <Link href="checkout">
             <div className="relative flex items-center link">

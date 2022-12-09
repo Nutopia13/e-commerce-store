@@ -5,13 +5,28 @@ import { useSelector } from "react-redux";
 import { selectItems, selectTotal } from "../lib/slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
 import { useSession } from "next-auth/react";
-import {motion as m} from 'framer-motion'
-
+import { motion as m } from "framer-motion";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 
 const Checkout = () => {
   const items = useSelector(selectItems);
   const { data: session } = useSession();
   const total = useSelector(selectTotal);
+
+  const createCheckoutSession = async () => {
+    const stripe = await loadStripe(process.env.stripe_public_key);
+    // Call the backend to create a checkout session...
+    const checkoutSession = await axios.post("/api/create-checkout-session", {
+      items: items,
+      email: session.user.email,
+    });
+    // Redirect user/customer to Stripe Checkout
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+    if (result.error) alert(result.error.message);
+  };
   return (
     <>
       <Header />
@@ -53,11 +68,14 @@ const Checkout = () => {
             <h2 className="mb-4 text-2xl font-bold text-center text-white whitespace-nowrap">
               Subtotal ({items.length} items)
             </h2>
-            <h3 className="text-xl font-bold">Total: <span className="font-medium">${total}</span> </h3>
+            <h3 className="text-xl font-bold">
+              Total: <span className="font-medium">${total}</span>{" "}
+            </h3>
             <m.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-      
+              role="link"
+              onClick={createCheckoutSession}
               disabled={!session}
               className={`mt-4 p-2 text-sm font-bold text-white rounded-md bg-accent_yellow ${
                 !session &&
