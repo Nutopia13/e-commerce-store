@@ -63,7 +63,7 @@ const Header = () => {
               <span className="absolute top-0 right-0 w-4 h-4 font-bold text-center rounded-full bg-accent_yellow">
                 {items.length}
               </span>
-              <ShoppingBagIcon className="h-10" />
+              <ShoppingBagIcon className="h-11" />
             </div>
           </Link>
         </div>
